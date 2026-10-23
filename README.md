@@ -158,9 +158,10 @@ projeto-ecommerce-olist/
 
 1. Baixe os arquivos CSV no [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
 2. No BigQuery, crie o conjunto de dados `olist` (região US) e carregue cada CSV como uma tabela. A tabela de avaliações exige a opção "Permitir novas linhas entre aspas".
-3. Rode `sql/01_validacao_carga.sql` e confira a quantidade de linhas.
-4. Rode os arquivos `sql/08` a `sql/10` para criar as views.
-5. Abra `powerbi/olist_dashboard.pbix`, informe o seu projeto do BigQuery e atualize os dados.
+3. Nos arquivos da pasta `sql/`, substitua `estudos-sql-512214` pelo ID do seu projeto no BigQuery.
+4. Rode `sql/01_validacao_carga.sql` e confira a quantidade de linhas.
+5. Rode os arquivos `sql/08` a `sql/10` para criar as views.
+6. Abra `powerbi/olist_dashboard.pbix`, informe o seu projeto do BigQuery e atualize os dados.
 
 ---
 
