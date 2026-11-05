@@ -3,6 +3,15 @@
 -- Tabelas: pedidos + avaliacoes (order_id)
 -- Regras: pedidos entregues, período jan/2017 a ago/2018
 
+WITH avaliacao_pedido AS (
+  -- Um pedido pode ter mais de uma avaliação: fica uma linha por pedido
+  SELECT
+    order_id,
+    AVG(review_score) AS nota_avaliacao
+  FROM `estudos-sql-512214.olist.avaliacoes`
+  GROUP BY order_id
+)
+
 SELECT
   CASE
     WHEN DATE(p.order_delivered_customer_date) <= DATE(p.order_estimated_delivery_date)
@@ -10,9 +19,9 @@ SELECT
     ELSE 'Atrasado'
   END AS entrega,
   COUNT(*) AS qtde_pedidos,
-  ROUND(AVG(a.review_score), 2) AS nota_media
+  ROUND(AVG(a.nota_avaliacao), 2) AS nota_media
 FROM `estudos-sql-512214.olist.pedidos` AS p
-JOIN `estudos-sql-512214.olist.avaliacoes` AS a
+JOIN avaliacao_pedido AS a
   ON a.order_id = p.order_id
 WHERE p.order_status = 'delivered'
   AND p.order_delivered_customer_date IS NOT NULL

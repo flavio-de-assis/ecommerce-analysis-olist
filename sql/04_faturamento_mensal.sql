@@ -1,13 +1,18 @@
 -- Projeto: Análise de E-commerce Olist
 -- Pergunta: como o faturamento evoluiu mês a mês?
--- Tabelas: pedidos + pagamentos (order_id)
--- Regra de negócio: apenas pedidos entregues
-select 
-  date_trunc(date(p.order_purchase_timestamp), MONTH) as mes,
-  count(distinct p.order_id) as total_pedidos,
-  round(sum(pg.payment_value),2) as faturamento 
-from `estudos-sql-512214.olist.pedidos` p
-join `estudos-sql-512214.olist.pagamentos` pg on p.order_id = pg.order_id
-where p.order_status = 'delivered'  AND DATE(p.order_purchase_timestamp) BETWEEN '2017-01-01' AND '2018-08-31'
-group by mes
-order by mes
+-- Tabelas: pedidos + itens_pedido (order_id)
+-- Regras: pedidos entregues, período jan/2017 a ago/2018
+-- Faturamento: soma do preço dos itens, sem o frete
+
+SELECT
+  DATE_TRUNC(DATE(p.order_purchase_timestamp), MONTH) AS mes,
+  COUNT(DISTINCT p.order_id) AS total_pedidos,
+  ROUND(SUM(ip.price), 2) AS faturamento
+FROM `estudos-sql-512214.olist.pedidos` AS p
+JOIN `estudos-sql-512214.olist.itens_pedido` AS ip
+  ON ip.order_id = p.order_id
+WHERE p.order_status = 'delivered'
+  AND p.order_delivered_customer_date IS NOT NULL
+  AND DATE(p.order_purchase_timestamp) BETWEEN '2017-01-01' AND '2018-08-31'
+GROUP BY mes
+ORDER BY mes
