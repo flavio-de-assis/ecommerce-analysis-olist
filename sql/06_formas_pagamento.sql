@@ -17,6 +17,7 @@ FROM `estudos-sql-512214.olist.pedidos` AS p
 JOIN `estudos-sql-512214.olist.pagamentos` AS pg
   ON pg.order_id = p.order_id
 WHERE p.order_status = 'delivered'
+  AND p.order_delivered_customer_date IS NOT NULL
   AND DATE(p.order_purchase_timestamp) BETWEEN '2017-01-01' AND '2018-08-31'
 GROUP BY forma_pagamento
 ORDER BY qtde_pagamentos DESC

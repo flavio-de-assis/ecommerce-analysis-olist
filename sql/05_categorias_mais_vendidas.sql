@@ -13,6 +13,7 @@ JOIN `estudos-sql-512214.olist.itens_pedido` AS ip
 JOIN `estudos-sql-512214.olist.produtos` AS pd
   ON pd.product_id = ip.product_id
 WHERE p.order_status = 'delivered'
+  AND p.order_delivered_customer_date IS NOT NULL
   AND DATE(p.order_purchase_timestamp) BETWEEN '2017-01-01' AND '2018-08-31'
 GROUP BY categoria
 ORDER BY faturamento DESC

@@ -113,7 +113,7 @@ CSVs (Kaggle) → Ingestão no BigQuery → Validação da carga → Análises e
 
 1. **O atraso derruba a nota.** Pedidos entregues no prazo têm nota média de **4,29**; os atrasados, de **2,27**. Uma queda de 2 pontos, quase metade da nota.
 2. **O faturamento cresceu ao longo de 2017**, com pico em **novembro de 2017 (Black Friday)**, e se estabilizou em patamar alto em 2018.
-3. **O faturamento é concentrado no Sudeste.** São Paulo responde por cerca de **R$ 5,1 milhões**, perto de 39% do total, seguido por RJ e MG.
+3. **O faturamento é concentrado no Sudeste.** São Paulo responde por cerca de **R$ 5,1 milhões**, perto de 38% do total, seguido por RJ e MG.
 4. **Beleza e Saúde, Relógios e Presentes, e Cama, Mesa e Banho** lideram o faturamento. Cama, Mesa e Banho é a categoria com mais itens vendidos, mas fica em 3º no faturamento, indicando itens de menor valor.
 5. **A pontualidade cai em momentos de pico.** Em novembro de 2017, os pedidos no prazo caíram para cerca de 88%.
 6. **Ponto de atenção:** em fevereiro e março de 2018, a pontualidade caiu para cerca de 81% **sem coincidir com pico de vendas**. Os dados disponíveis não explicam a causa, e a queda merece investigação.
